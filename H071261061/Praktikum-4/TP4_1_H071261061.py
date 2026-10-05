@@ -1,0 +1,26 @@
+def hitung_subtotal(harga, jumlah, adalah_member = False):
+    subtotal = harga * jumlah
+    if adalah_member:
+        subtotal *= 0.9  # Potongan diskon 10%
+    return int(subtotal)
+
+print("Selamat datang di Kasir Minimarket!")
+input_member = input("Apakah Anda member? (y/n): ").lower() 
+status_member = True if input_member == 'y' else False
+
+total_belanja = 0
+
+while True:
+    nama_barang = input("Masukkan nama barang (kosongkan untuk selesai): ")
+    if nama_barang == "":
+        print(f"Total belanja: Rp{total_belanja}")
+        break
+        
+    harga = int(input("Harga barang: "))
+    jumlah = int(input("Jumlah barang: "))
+    
+    # Memanggil function dengan argumen yang sesuai
+    subtotal = hitung_subtotal(harga, jumlah, status_member)
+    print(f"Subtotal {nama_barang}: Rp{subtotal}")
+    total_belanja += subtotal
+
